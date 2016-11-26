@@ -24,11 +24,11 @@ var config = getConfig({
   html(context) {
     return {
       'index.html': context.defaultTemplate({
-        title: 'yelp-clone from fullstackreact.com',
+        title: 'yelp',
         publicPath: isDev ? 'http://localhost:3000/' : '',
         meta: {
-          'name': 'fullstackreact yelp clone',
-          'description': 'A minimal yelp clone from the team behind the fullstackreact.com book'
+          'name': 'yelp',
+          'description': 'react project'
         }
       })
     };
