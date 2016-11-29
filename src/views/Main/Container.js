@@ -38,7 +38,7 @@ export class Container extends React.Component {
             google={this.props.google}
             onReady={this.onReady.bind(this)}
             visible={false}>
-
+            <Header />
             {this.state.places.map(place => {
               return (<div key={place.id}>{place.name}</div>)
             })}
