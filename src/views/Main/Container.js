@@ -36,21 +36,15 @@ export class Container extends React.Component {
 
   render() {
       return (
-        <div>
-          Hello from the container
-          <Map
-            google={this.props.google}
-            onReady={this.onReady.bind(this)}
-            visible={false}
-            className={styles.wrapper}>
-            <Header />
-            <Sidebar
-            title={'Restaurants'}
-            places={this.state.places}
-            />
-            <Listing places={this.state.places} />
-          </Map>
-        </div>
+        <Map
+          visible={false}
+          className={styles.wrapper}>
+          <Header />
+          <Sidebar />
+          <div className={styles.content}>
+            {this.props.children}
+          </div>
+        </Map>
       )
     }
 }
