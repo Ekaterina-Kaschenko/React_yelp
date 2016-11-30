@@ -2,6 +2,7 @@ import React, { PropTypes as T } from 'react';
 import Map, {GoogleApiWrapper} from 'google-maps-react';
 import {searchNearby} from 'utils/googleApiHelpers';
 import {Header} from '../../components/Header/Header.js';
+import {Listing} from '../../components/Listing/Listing.js';
 import Sidebar from 'components/Sidebar/Sidebar';
 import styles from './styles.module.css';
 
@@ -47,10 +48,7 @@ export class Container extends React.Component {
             title={'Restaurants'}
             places={this.state.places}
             />
-            {this.state.places.map(place => {
-              return (<div key={place.id}>{place.name}</div>)
-            })}
-
+            <Listing places={this.state.places} />
           </Map>
         </div>
       )
