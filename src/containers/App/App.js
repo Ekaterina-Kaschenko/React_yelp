@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react';
 import { Router } from 'react-router';
 
-export default class App extends React.Component {
+class App extends React.Component {
   static propTypes = {
-    routes: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
-  }
+    history: PropTypes.object.isRequired,
+    routes: PropTypes.element.isRequired
+  };
 
   render() {
     return (

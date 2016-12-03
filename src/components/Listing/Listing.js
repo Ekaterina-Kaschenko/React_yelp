@@ -1,8 +1,8 @@
-import React, { PropTypes as T } from 'react'
-import classnames from 'classnames'
+import React, { PropTypes as T } from 'react';
+import classnames from 'classnames';
 
 import Item from './Item';
-import styles from './styles.module.css'
+import styles from './styles.module.css';
 
 export class Listing extends React.Component {
   render() {
@@ -20,4 +20,4 @@ export class Listing extends React.Component {
   }
 }
 
-export default Listing
+export default Listing;
