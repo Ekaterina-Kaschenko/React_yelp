@@ -24,6 +24,7 @@ var config = getConfig({
   html(context) {
     return {
       'index.html': context.defaultTemplate({
+        favicon: 'favicon.ico',
         title: 'yelp',
         publicPath: isDev ? 'http://localhost:3000/' : '',
         meta: {
