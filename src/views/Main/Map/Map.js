@@ -2,7 +2,7 @@ import React, { PropTypes as T } from 'react';
 import classnames from 'classnames';
 import Map, { Marker } from 'google-maps-react'
 
-import styles from './styles.module.css';
+import styles from '../styles.module.css';
 
 export class MapComponent extends React.Component {
   renderChildren() {
@@ -15,7 +15,7 @@ export class MapComponent extends React.Component {
         })
       })
     } else {
-      return this._renderMarkers();
+      return this.renderMarkers();
     }
   }
   renderMarkers() {
@@ -25,7 +25,7 @@ export class MapComponent extends React.Component {
                   name={place.id}
                   place={place}
                   onClick={this.props.onMarkerClick.bind(this)}
-                  label={p.name}
+                  label={place.name}
                   map={this.props.map}
                   position={place.geometry.location}
             />
@@ -36,7 +36,7 @@ export class MapComponent extends React.Component {
       <Map google={this.props.google}
           map={this.props.map}
           className={styles.map}
-          visible={!children || React.Children.count(children) == 0}
+          visible={!this.props.children || React.Children.count(this.props.children) == 0}
         >
         {this.renderChildren()}
       </Map>
