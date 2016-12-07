@@ -11,6 +11,8 @@ export class MapComponent extends React.Component {
       return <Marker key={place.id}
                   name={place.id}
                   place={place}
+                  label={p.name}
+                  map={this.props.map}
                   position={place.geometry.location}
             />
     })
@@ -18,6 +20,7 @@ export class MapComponent extends React.Component {
   render() {
     return (
       <Map google={this.props.google}
+          map={this.props.map}
           className={styles.map}>
         {this.renderMarkers()}
       </Map>
