@@ -14,16 +14,16 @@ export class Container extends React.Component {
     this.state = {
       places: [],
       pagination: null
-    }
+    };
   }
 
-  onReady= (mapProps, map) => {
+  onReady = (mapProps, map) => {
     const {google} = this.props;
     const opts = {
       location: map.center,
       radius: '500',
       types: ['cafe']
-    }
+    };
     searchNearby(google, map, opts)
       .then((results, pagination) => {
         this.setState({
@@ -59,7 +59,7 @@ export class Container extends React.Component {
         google={this.props.google}
         visible={false}
         className={styles.wrapper}
-        onReady={this.onReady}>
+        onReady={this.onReady.bind(this)}>
         <Header />
         <Sidebar
           title={'Restaurants'}
@@ -67,7 +67,7 @@ export class Container extends React.Component {
           places={this.state.places}
         />
         <div className={styles.content}>
-          {this.children}
+          {children}
         </div>
       </Map>
     )
@@ -76,8 +76,8 @@ export class Container extends React.Component {
 
 Container.contextTypes = {
   router: React.PropTypes.object
-}
+};
 
 export default GoogleApiWrapper({
-  apiKey: process.env.__GAPI_KEY__
+  apiKey: __GAPI_KEY__
 })(Container);

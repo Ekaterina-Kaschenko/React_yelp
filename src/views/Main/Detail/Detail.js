@@ -33,16 +33,37 @@ export class Detail extends React.Component {
     }
   }
 
-  renderPhotos(place) {
-    if (!place.photos || place.photos.length == 0) return;
+  getDetails(map) {
+    const {google, params} = this.props;
+    const {placeId} = params;
 
-    const cfg = {maxWidth: 100, maxHeight: 100}
-    return (<div className={styles.photoStrip}>
-      {place.photos.map(p => {
-        const url = `${p.getUrl(cfg)}.png`
-        return (<img key={url} src={url} />)
-      })}
-    </div>)
+    this.setState({loading: true}, () => {
+      getDetails(google, map, placeId)
+        .then(place => {
+          const {location} = place.geometry;
+          const loc = {
+            lat: location.lat(),
+            lng: location.lng()
+          }
+
+          this.setState({
+            place, location: loc, loading: false
+          });
+        })
+    });
+  }
+
+  renderPhotos(place) {
+    if (!place.photos || !place.photos.length) return;
+    const cfg = {maxWidth: 100, maxHeight: 100};
+    return (
+      <div className={styles.photoStrip}>
+        {place.photos.map(p => {
+          const url = `${p.getUrl(cfg)}.png`
+          return (<img key={url} src={url} />)
+       })}
+     </div>
+   )
   }
 
   getDetails(map) {
@@ -72,9 +93,11 @@ export class Detail extends React.Component {
 
   render() {
     if (this.state.loading) {
-      return (<div className={styles.wrapper}>
-        Loading...
-      </div>)
+      return (
+        <div className={styles.wrapper}>
+          Loading...
+        </div>
+      );
     }
 
     const {place} = this.state;
@@ -92,4 +115,4 @@ export class Detail extends React.Component {
   }
 }
 
-export default Detail
+export default Detail;

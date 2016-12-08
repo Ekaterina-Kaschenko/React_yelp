@@ -10,6 +10,6 @@ export const makeRoutes = () => {
       <Route path=''>
         {main}
       </Route>
-    )
+    );
 }
 export default makeRoutes;

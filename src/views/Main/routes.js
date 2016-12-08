@@ -2,16 +2,16 @@ import React from 'react';
 import {Route, IndexRoute} from 'react-router';
 import Container from './Container';
 import MapComponent from './Map/Map';
-import Detail from './Detail/Detail';
+import DetailComponent from './Detail/Detail';
 
-export const makeMainRoutes = () => {
-
+const makeMainRoutes = () => {
   return (
-    <Route path="" component={Container}>
-      <Route path="map" component={Map} />
-      <Route path="detail/:placeId"
-            component={Detail} />
-      <IndexRoute component={Map} />
+    <Route path="/" component={Container}>
+      <Route path="map" component={MapComponent}>
+        <Route path="detail/:placeId" component={DetailComponent} />
+      </Route>
+
+      <IndexRoute component={MapComponent} />
     </Route>
   )
 }
