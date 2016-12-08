@@ -36,12 +36,23 @@ export class MapComponent extends React.Component {
       <Map google={this.props.google}
           map={this.props.map}
           className={styles.map}
+          onRecenter={this.props.onMove}
+          onDragend={this.props.onMove}
+          onClick={this.props.onClick}
           visible={!this.props.children || React.Children.count(this.props.children) == 0}
         >
         {this.renderChildren()}
       </Map>
     )
   }
+}
+
+MapComponent.propTypes = {
+  onMarkerClick: T.func
+}
+const identity = (...a) => a;
+MapComponent.defaultProps = {
+  onMarkerClick: identity
 }
 
 export default MapComponent;

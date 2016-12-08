@@ -8,8 +8,8 @@ import Sidebar from 'components/Sidebar/Sidebar';
 import styles from './styles.module.css';
 
 export class Container extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
 
     this.state = {
       places: [],
@@ -50,6 +50,7 @@ export class Container extends React.Component {
           google: this.props.google,
           places: this.state.places,
           loaded: this.props.loaded,
+          router: this.context.router,
           onMarkerClick: this.onMarkerClick.bind(this)
         });
     }
@@ -62,10 +63,11 @@ export class Container extends React.Component {
         <Header />
         <Sidebar
           title={'Restaurants'}
+          onListItemClick={this.onMarkerClick.bind(this)}
           places={this.state.places}
         />
         <div className={styles.content}>
-          {children}
+          {this.children}
         </div>
       </Map>
     )
