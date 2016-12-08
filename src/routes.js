@@ -7,10 +7,8 @@ export const makeRoutes = () => {
   const main = makeMainRoutes();
 
   return (
-    <Route path="" component={Container}>
-      <Route path="map" component={Map} />
-      <Route path="detail/:placeId"
-            component={Detail} />
+    <Route path="">
+      {main}
     </Route>
   )
 }

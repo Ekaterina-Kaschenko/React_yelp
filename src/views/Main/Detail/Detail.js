@@ -33,36 +33,40 @@ export class Detail extends React.Component {
 
     this.setState({loading: true}, () => {
       getDetails(google, map, placeId)
-      .then(place => {
-        const {location} = place.geometry;
-        const loc = {
-          lat: location.lat(),
-          lng: location.lng()
-        }
+        .then(place => {
+          const {location} = place.geometry;
+          const loc = {
+            lat: location.lat(),
+            lng: location.lng()
+          }
 
-        this.setState({
-          place, location: loc, loading: false
-        });
-      })
+          this.setState({
+            place, location: loc, loading: false
+          });
+        })
     });
   }
 
   renderPhotos(place) {
-    if (!place.photos || place.photos.length == 0) return;
-    const cfg = {maxWidth: 100, maxHeight: 100}
-    return (<div className={styles.photoStrip}>
-      {place.photos.map(p => {
-        const url = `${p.getUrl(cfg)}.png`
-        return (<img key={url} src={url} />)
+    if (!place.photos || !place.photos.length) return;
+    const cfg = {maxWidth: 100, maxHeight: 100};
+    return (
+      <div className={styles.photoStrip}>
+        {place.photos.map(p => {
+          const url = `${p.getUrl(cfg)}.png`
+          return (<img key={url} src={url} />)
        })}
-     </div>)
+     </div>
+   )
   }
 
   render() {
     if (this.state.loading) {
-      return (<div className={styles.wrapper})>
-                Loading...
-              </div>);
+      return (
+        <div className={styles.wrapper}>
+          Loading...
+        </div>
+      );
     }
     // We're no longer loading when we get here
     const {place} = this.state;
@@ -79,4 +83,4 @@ export class Detail extends React.Component {
   }
 }
 
-export default Detail
+export default Detail;

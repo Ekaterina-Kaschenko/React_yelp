@@ -127,7 +127,7 @@ if (isTest) {
 
     const idx = [
       'DedupePlugin',
-      'UglifyJsPlugin'
+      //'UglifyJsPlugin'
     ].indexOf(fnName[1]);
     return idx < 0;
   })
