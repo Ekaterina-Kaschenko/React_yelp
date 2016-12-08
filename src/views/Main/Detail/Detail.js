@@ -60,7 +60,7 @@ export class Detail extends React.Component {
 
   render() {
     if (this.state.loading) {
-      return (<div className={styles.wrapper})>
+      return (<div className={styles.wrapper}>
                 Loading...
               </div>);
     }
