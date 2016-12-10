@@ -5,6 +5,11 @@
   overflow: auto;
   padding-bottom: 60px;
   margin: 0;
+
+  div {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .item {
