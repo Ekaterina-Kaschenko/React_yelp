@@ -4,6 +4,15 @@ import Map, { Marker } from 'google-maps-react'
 
 import styles from '../styles.module.css';
 
+Map.defaultProps = {
+  zoom: 13,
+  // San Francisco, by default
+  initialCenter: {
+    lat: 50.0647,
+    lng: 19.9450
+  }
+}
+
 export class MapComponent extends React.Component {
   renderChildren() {
     const {children} = this.props;
