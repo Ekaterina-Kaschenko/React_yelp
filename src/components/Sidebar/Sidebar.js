@@ -4,16 +4,29 @@ import Listing from 'components/Listing/Listing';
 import classnames from 'classnames';
 
 export class Sidebar extends React.Component {
+  onClick(place, map, google) {
+    if (this.props.onListItemClick) {
+      place.place = place;
+      this.props.onListItemClick(place, map, google)
+    }
+  }
   render() {
     return (
       <div className={classnames(styles.sidebar)}>
         <div className={classnames(styles.heading)}>
           <h1>{this.props.title}</h1>
         </div>
-        <Listing places={this.props.places} />
+        <Listing places={this.props.places}
+          onClick={this.onClick.bind(this)} />
       </div>
     )
   }
+}
+
+Sidebar.propTypes = {
+  places: T.array,
+  title: T.string,
+  onListItemClick: T.func
 }
 
 Sidebar.defaultProps = {

@@ -24,6 +24,7 @@ var config = getConfig({
   html(context) {
     return {
       'index.html': context.defaultTemplate({
+        favicon: 'favicon.ico',
         title: 'yelp',
         publicPath: isDev ? 'http://localhost:3000/' : '',
         meta: {
@@ -126,11 +127,12 @@ if (isTest) {
 
     const idx = [
       'DedupePlugin',
-      'UglifyJsPlugin'
+      //'UglifyJsPlugin'
     ].indexOf(fnName[1]);
     return idx < 0;
   })
 }
+
 // End Testing
 
 module.exports = config;
