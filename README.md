@@ -18,4 +18,4 @@ To open my project do next steps:
   npm start
   ```
 
-4. Open it at url: http://localhost:3000/
+4. Open it at url: http://localhost:3000/map
